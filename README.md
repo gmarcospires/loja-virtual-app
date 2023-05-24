@@ -8,6 +8,8 @@ Esse é um projeto criado usando T3 stack.
 > - TRPC
 > - Tailwind
 > - Next Auth
+> - Mantine
+> - Tabler Icons
 
 ### Inicializando o Projeto:
 
