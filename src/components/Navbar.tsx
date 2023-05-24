@@ -24,7 +24,7 @@ export const Navbar: React.FC<Props> = ({ isNavbarOpen, ...props }) => {
         <Nav.Section mt="xs">S1</Nav.Section>
         <Nav.Section
           grow
-          component={(props: any) => <ScrollArea type="never" {...props} />}
+          component={(props: any) => <ScrollArea type="never" {...props} />} //TODO
           mx="-xs"
           px="xs"
         >
