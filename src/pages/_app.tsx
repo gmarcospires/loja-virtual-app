@@ -1,16 +1,18 @@
-import { type AppType } from "next/app";
+import { AppShell, MantineProvider } from "@mantine/core";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
-
-import { api } from "~/utils/api";
-
+import { type AppType } from "next/app";
+import { useState } from "react";
+import { Header } from "~/components/Header";
+import { Navbar } from "~/components/Navbar";
 import "~/styles/globals.css";
-import { MantineProvider } from "@mantine/core";
+import { api } from "~/utils/api";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
+  const [opened, setOpened] = useState<boolean>(false);
   return (
     <SessionProvider session={session}>
       <MantineProvider
@@ -18,10 +20,16 @@ const MyApp: AppType<{ session: Session | null }> = ({
         withNormalizeCSS
         theme={{
           /** Put your mantine theme override here */
-          colorScheme: "dark",
+          colorScheme: "light",
         }}
       >
-        <Component {...pageProps} />
+        <AppShell
+          padding={"xs"}
+          navbar={<Navbar isNavbarOpen={!opened} />}
+          header={<Header isNavbarOpen={opened} toggleNavbar={setOpened} />}
+        >
+          <Component {...pageProps} />
+        </AppShell>
       </MantineProvider>
     </SessionProvider>
   );
