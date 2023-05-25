@@ -1,13 +1,7 @@
-import {
-  Container,
-  Grid,
-  Loader,
-  LoadingOverlay,
-  SegmentedControl,
-  Tabs,
-} from "@mantine/core";
+import { Grid, LoadingOverlay, Tabs } from "@mantine/core";
 import { type NextPage } from "next";
 import { useState } from "react";
+import PageContainer from "~/components/Container";
 import { ProductCard } from "~/components/ProductCard";
 import { api } from "~/utils/api";
 
@@ -17,6 +11,7 @@ const Home: NextPage = () => {
   const apiResult = api.products.getProducts.useQuery(
     {
       category: activeTab || "todos",
+      limit: 20,
     },
     { refetchOnWindowFocus: true }
   );
@@ -25,7 +20,7 @@ const Home: NextPage = () => {
   });
 
   return (
-    <Container className="relative flex min-h-screen min-w-full flex-col gap-10">
+    <PageContainer>
       <Tabs
         variant="default"
         color="blue"
@@ -43,6 +38,7 @@ const Home: NextPage = () => {
             ))}
         </Tabs.List>
       </Tabs>
+
       {apiResult.isLoading ? (
         <LoadingOverlay visible={true} overlayBlur={2} />
       ) : (
@@ -51,7 +47,11 @@ const Home: NextPage = () => {
             <>
               <Grid grow className="h-full w-full">
                 {apiResult.data.map((product) => (
-                  <Grid.Col md={6} lg={3} key={product.id}>
+                  <Grid.Col
+                    key={product.id}
+                    span="auto"
+                    className="flex justify-center"
+                  >
                     <ProductCard product={product} />
                   </Grid.Col>
                 ))}
@@ -62,7 +62,7 @@ const Home: NextPage = () => {
           )}
         </>
       )}
-    </Container>
+    </PageContainer>
   );
 };
 
