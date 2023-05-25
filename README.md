@@ -11,6 +11,7 @@ Node v18 (18.16.0)
 > - Next Auth
 > - Mantine
 > - Tabler Icons
+> - Axios
 
 ### Inicializando o Projeto:
 

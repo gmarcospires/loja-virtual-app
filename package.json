@@ -25,6 +25,7 @@
     "@trpc/next": "^10.18.0",
     "@trpc/react-query": "^10.18.0",
     "@trpc/server": "^10.18.0",
+    "axios": "^1.4.0",
     "embla-carousel-react": "8.0.0-rc04",
     "next": "^13.4.1",
     "next-auth": "^4.21.0",
