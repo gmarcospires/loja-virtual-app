@@ -14,7 +14,11 @@ export const Navbar: React.FC<Props> = ({ isNavbarOpen, ...props }) => {
         height={600}
         p="md"
         hiddenBreakpoint={"sm"}
-        width={collapsedNavbar ? { sm: "auto" } : { sm: 190 }} //TODO
+        width={
+          collapsedNavbar
+            ? { sm: 80, md: 80, lg: 80, xl: 80 }
+            : { sm: 190, md: 190, lg: 190, xl: 190 }
+        }
         h={"auto"}
         withBorder={false}
         w={isNavbarOpen ? "100%" : "auto"}
@@ -24,7 +28,7 @@ export const Navbar: React.FC<Props> = ({ isNavbarOpen, ...props }) => {
         <Nav.Section mt="xs">S1</Nav.Section>
         <Nav.Section
           grow
-          component={(props: any) => <ScrollArea type="never" {...props} />} //TODO
+          component={(props: any) => <ScrollArea type="never" {...props} />}
           mx="-xs"
           px="xs"
         >
@@ -39,12 +43,16 @@ export const Navbar: React.FC<Props> = ({ isNavbarOpen, ...props }) => {
           }
         >
           <ActionIcon
-            className=""
             size={"lg"}
             title="Colapsar Navbar"
+            variant="light"
             onClick={() => setCollapsedNavbar(!collapsedNavbar)}
           >
-            {collapsedNavbar ? <IconChevronsRight /> : <IconChevronsLeft />}
+            {collapsedNavbar ? (
+              <IconChevronsRight color="black" />
+            ) : (
+              <IconChevronsLeft color="black" />
+            )}
           </ActionIcon>
         </Nav.Section>
       </Nav>

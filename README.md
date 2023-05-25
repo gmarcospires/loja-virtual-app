@@ -1,6 +1,7 @@
 # Loja Virtual
 
 Esse é um projeto criado usando T3 stack.
+Node v18 (18.16.0)
 
 ### Tecnologias utilizadas:
 
