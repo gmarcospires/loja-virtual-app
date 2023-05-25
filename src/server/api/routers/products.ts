@@ -21,18 +21,35 @@ interface Resposta {
   statusText: string;
 }
 
+interface RespostaCategories {
+  data: string[];
+  status: number;
+  statusText: string;
+}
+
 export const productsController = createTRPCRouter({
   getProducts: publicProcedure
     .input(
       z.object({
         limit: z.number().optional(),
         sort: z.enum(["desc", "asc"]).optional(),
+        category: z.string(),
       })
     )
     .query(async ({ input }) => {
-      const { limit, sort } = input;
+      const { limit, sort, category } = input;
       const query = `?limit=${limit || 20}&sort=${sort || "desc"}`;
-      const resposta: Resposta = await instanceStore.get(`/products${query}`);
+      const resposta: Resposta = await instanceStore.get(
+        `/products${
+          category !== "todos" ? `/category/${category}` : ""
+        }${query}`
+      );
       return [...(resposta.data || [])];
     }),
+  getCategories: publicProcedure.query(async () => {
+    const resposta: RespostaCategories = await instanceStore.get(
+      `/products/categories`
+    );
+    return [...(resposta.data || [])];
+  }),
 });
