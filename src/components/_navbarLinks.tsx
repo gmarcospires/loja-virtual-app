@@ -12,17 +12,6 @@ interface MainLinkProps {
 }
 
 function MainLink({ icon, color, label, simple, link }: MainLinkProps) {
-  // if (simple)
-  //   return (
-  //     <UnstyledButton
-  //       title={label}
-  //       className="dark:hover:bg-dark-6 flex w-full items-center justify-center rounded-md p-2 hover:bg-gray-100"
-  //     >
-  //       <ThemeIcon color={color} variant="light" size={"lg"}>
-  //         {icon}
-  //       </ThemeIcon>
-  //     </UnstyledButton>
-  //   );
   return (
     <UnstyledButton className="dark:hover:bg-dark-6 block w-full items-center justify-center rounded-md py-2 hover:bg-gray-100">
       <Link href={link}>

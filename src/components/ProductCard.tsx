@@ -26,6 +26,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             width={250}
             height={150}
             fit="contain"
+            withPlaceholder
             alt={`Product Image ${product.title}`}
           />
         </Card.Section>

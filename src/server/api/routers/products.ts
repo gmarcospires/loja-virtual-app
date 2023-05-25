@@ -21,6 +21,12 @@ interface Resposta {
   statusText: string;
 }
 
+interface RespostaUnica {
+  data: Products;
+  status: number;
+  statusText: string;
+}
+
 interface RespostaCategories {
   data: string[];
   status: number;
@@ -45,6 +51,19 @@ export const productsController = createTRPCRouter({
         }${query}`
       );
       return [...(resposta.data || [])];
+    }),
+  getProduct: publicProcedure
+    .input(
+      z.object({
+        id: z.number(),
+      })
+    )
+    .query(async ({ input }) => {
+      const { id } = input;
+      const resposta: RespostaUnica = await instanceStore.get(
+        `/products/${id}`
+      );
+      return resposta.data || {};
     }),
   getCategories: publicProcedure.query(async () => {
     const resposta: RespostaCategories = await instanceStore.get(
