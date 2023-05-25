@@ -6,7 +6,12 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ isNavbarOpen, toggleNavbar }) => {
   return (
-    <Head height={{ base: 70 }} p="md">
+    <Head
+      height={{ base: 70 }}
+      p="md"
+      className="bg-gray-200"
+      withBorder={false}
+    >
       <div className="flex h-full items-center">
         <MediaQuery largerThan="sm" styles={{ display: "none" }}>
           <Burger

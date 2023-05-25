@@ -13,6 +13,7 @@ export const Navbar: React.FC<Props> = ({ isNavbarOpen, ...props }) => {
       <Nav
         height={600}
         p="md"
+        className="bg-gray-200"
         hiddenBreakpoint={"sm"}
         width={
           collapsedNavbar
