@@ -23,9 +23,10 @@ const Home: NextPage = () => {
     <PageContainer>
       <Tabs
         variant="default"
-        color="blue"
+        bg={"#FFF"}
         defaultValue="todos"
         onTabChange={setActiveTab}
+        // className="fixed z-10"
       >
         <Tabs.List grow>
           <Tabs.Tab value="todos"> Todos </Tabs.Tab>

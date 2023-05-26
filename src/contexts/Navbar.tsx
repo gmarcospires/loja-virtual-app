@@ -1,9 +1,9 @@
 import {
   createContext,
   useState,
+  type Dispatch,
   type ReactNode,
   type SetStateAction,
-  type Dispatch,
 } from "react";
 
 interface NavbarOpenContext {

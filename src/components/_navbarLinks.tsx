@@ -1,7 +1,14 @@
-import { Group, Text, ThemeIcon, UnstyledButton } from "@mantine/core";
-import { IconHome, IconShoppingCart } from "@tabler/icons-react";
+import {
+  Group,
+  Indicator,
+  Text,
+  ThemeIcon,
+  UnstyledButton,
+} from "@mantine/core";
+import { IconShoppingCart } from "@tabler/icons-react";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
+import { Carrinho } from "~/contexts/Carrinho";
 
 interface MainLinkProps {
   icon: React.ReactNode;
@@ -16,9 +23,7 @@ function MainLink({ icon, color, label, simple, link }: MainLinkProps) {
     <UnstyledButton className="dark:hover:bg-dark-6 block w-full items-center justify-center rounded-md py-2 hover:bg-gray-100">
       <Link href={link}>
         <Group className="flex w-full px-2">
-          <ThemeIcon color={color} variant="light" size={"lg"}>
-            {icon}
-          </ThemeIcon>
+          {icon}
           {!simple ? <Text>{label}</Text> : null}
         </Group>
       </Link>
@@ -26,22 +31,40 @@ function MainLink({ icon, color, label, simple, link }: MainLinkProps) {
   );
 }
 
-const data = [
-  {
-    icon: <IconHome />,
-    color: "blue",
-    label: "Página Inicial",
-    link: "/",
-  },
-  {
-    icon: <IconShoppingCart />,
-    color: "teal",
-    label: "Carrinho",
-    link: "/cart",
-  },
-];
-
 export function MainLinks({ simple }: { simple: boolean }) {
+  const { produtos } = useContext(Carrinho);
+
+  const data = [
+    {
+      icon: (
+        <ThemeIcon color={"blue"} variant="light" size={"lg"}>
+          <IconShoppingCart />
+        </ThemeIcon>
+      ),
+      color: "blue",
+      label: "Página Inicial",
+      link: "/",
+    },
+    {
+      icon: (
+        <Indicator
+          inline
+          size={16}
+          offset={2}
+          color="teal"
+          label={produtos.length ? produtos.reduce((a, b) => a + b.qtd, 0) : 0}
+          position="top-end"
+        >
+          <ThemeIcon color={"teal"} variant="light" size={"lg"}>
+            <IconShoppingCart />
+          </ThemeIcon>
+        </Indicator>
+      ),
+      color: "teal",
+      label: "Carrinho",
+      link: "/cart",
+    },
+  ];
   const links = data.map((link) => (
     <MainLink {...link} key={link.label} simple={simple} />
   ));

@@ -1,4 +1,10 @@
-import { ActionIcon, Box, Navbar as Nav, ScrollArea } from "@mantine/core";
+import {
+  ActionIcon,
+  Avatar,
+  Box,
+  Navbar as Nav,
+  ScrollArea,
+} from "@mantine/core";
 import { IconChevronsLeft, IconChevronsRight } from "@tabler/icons-react";
 import { useContext, useState } from "react";
 import { NavbarOpen } from "~/contexts/Navbar";
@@ -14,7 +20,7 @@ export const Navbar: React.FC = () => {
         height={600}
         p="md"
         // className="bg-gray-200"
-        bg={"gray"}
+        // bg={"gray"}
         hiddenBreakpoint={"sm"}
         width={
           collapsedNavbar
@@ -22,11 +28,16 @@ export const Navbar: React.FC = () => {
             : { sm: 190, md: 190, lg: 190, xl: 190 }
         }
         h={"auto"}
-        withBorder={false}
+        withBorder={true}
         w={!opened ? "100%" : "auto"}
         hidden={!opened}
       >
-        <Nav.Section mt="xs">S1</Nav.Section>
+        <Nav.Section
+          mt="xs"
+          className="flex w-full justify-center border-b-2 pb-2 align-middle"
+        >
+          <Avatar radius="xl" />
+        </Nav.Section>
         <Nav.Section
           grow
           component={(props: any) => <ScrollArea type="never" {...props} />}

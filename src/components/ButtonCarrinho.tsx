@@ -11,8 +11,17 @@ interface Props {
 const ButtonCarrinho: React.FC<Props> = ({ product }) => {
   const { produtos, updateProdutos } = useContext(Carrinho);
 
-  const handleClick = () => {
-    updateProdutos([...produtos, product]);
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+    const hasProduct = produtos.find((item) => item.id === product.id);
+    if (hasProduct) {
+      updateProdutos([
+        ...produtos.filter((item) => item.id !== product.id),
+        { ...hasProduct, qtd: hasProduct.qtd + 1 },
+      ]);
+    } else {
+      updateProdutos([...produtos, { ...product, qtd: 1 }]);
+    }
+    e.preventDefault();
   };
 
   return (
