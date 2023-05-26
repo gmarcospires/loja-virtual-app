@@ -8,7 +8,7 @@ interface Props {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
-    <Link href={`/product/${product.id}`} title="Detalhar Produto">
+    <Link href={`/product/${product.id}`} title="Ver Produto">
       <Card
         shadow="sm"
         padding="sm"
