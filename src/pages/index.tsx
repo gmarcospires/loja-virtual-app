@@ -21,13 +21,7 @@ const Home: NextPage = () => {
 
   return (
     <PageContainer>
-      <Tabs
-        variant="default"
-        bg={"#FFF"}
-        defaultValue="todos"
-        onTabChange={setActiveTab}
-        // className="fixed z-10"
-      >
+      <Tabs variant="default" defaultValue="todos" onTabChange={setActiveTab}>
         <Tabs.List grow>
           <Tabs.Tab value="todos"> Todos </Tabs.Tab>
           {apiCategories.isSuccess &&
