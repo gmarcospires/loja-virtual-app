@@ -27,12 +27,6 @@ interface RespostaUnica {
   statusText: string;
 }
 
-interface RespostaCategories {
-  data: string[];
-  status: number;
-  statusText: string;
-}
-
 export const productsController = createTRPCRouter({
   getProducts: publicProcedure
     .input(
@@ -65,10 +59,4 @@ export const productsController = createTRPCRouter({
       );
       return resposta.data || {};
     }),
-  getCategories: publicProcedure.query(async () => {
-    const resposta: RespostaCategories = await instanceStore.get(
-      `/products/categories`
-    );
-    return [...(resposta.data || [])];
-  }),
 });

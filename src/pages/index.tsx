@@ -13,9 +13,9 @@ const Home: NextPage = () => {
       category: activeTab || "todos",
       limit: 20,
     },
-    { refetchOnWindowFocus: true }
+    { refetchOnWindowFocus: false }
   );
-  const apiCategories = api.products.getCategories.useQuery(undefined, {
+  const apiCategories = api.categories.getCategories.useQuery(undefined, {
     refetchOnWindowFocus: false,
   });
 
