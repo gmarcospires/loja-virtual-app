@@ -181,7 +181,6 @@ const Cart = () => {
             </Text>
           </Group>
           <Group className="flex justify-end">
-            {/* <Link href="/checkout"> */}
             <Button
               variant="outline"
               color="green"
@@ -190,7 +189,6 @@ const Cart = () => {
             >
               Finalizar compra
             </Button>
-            {/* </Link> */}
           </Group>
         </Stack>
       ) : (
