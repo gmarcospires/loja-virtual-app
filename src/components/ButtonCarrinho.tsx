@@ -1,5 +1,6 @@
 import { Button, Text } from "@mantine/core";
-import { IconShoppingCart } from "@tabler/icons-react";
+import { notifications } from "@mantine/notifications";
+import { IconShoppingCart, IconShoppingCartPlus } from "@tabler/icons-react";
 import { useContext } from "react";
 import { Carrinho } from "~/contexts/Carrinho";
 import { type Products } from "~/server/api/routers/products";
@@ -21,6 +22,16 @@ const ButtonCarrinho: React.FC<Props> = ({ product }) => {
     } else {
       updateProdutos([...produtos, { ...product, qtd: 1 }]);
     }
+    notifications.show({
+      // id: product.id.toString(),
+      title: "Adiconado ao Carrinho 🛒",
+      message: `Produto ${product.title} adicionado ao carrinho`,
+      color: "teal",
+      autoClose: 5000,
+      icon: <IconShoppingCartPlus />,
+      radius: "lg",
+      withBorder: true,
+    });
     e.preventDefault();
   };
 

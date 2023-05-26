@@ -7,7 +7,7 @@ import {
   Text,
   ThemeIcon,
 } from "@mantine/core";
-import { IconShoppingCart } from "@tabler/icons-react";
+import { IconAlien, IconShoppingCart } from "@tabler/icons-react";
 import Link from "next/link";
 import { useContext } from "react";
 import { Carrinho } from "~/contexts/Carrinho";
@@ -35,7 +35,10 @@ export const Header: React.FC = () => {
           />
         </MediaQuery>
         <div className="flex w-full items-center justify-between">
-          <Text>Loja</Text>
+          <Group position="center">
+            <IconAlien size={30} color="orange" />
+            <Text>Pirado Store</Text>
+          </Group>
           <Group position="center" className="pr-5">
             <Link href={"/cart"}>
               <Indicator

@@ -1,4 +1,5 @@
 import { AppShell, MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
@@ -24,6 +25,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
               colorScheme: "light",
             }}
           >
+            <Notifications limit={5} />
             <AppShell padding={"xs"} navbar={<Navbar />} header={<Header />}>
               <Component {...pageProps} />
             </AppShell>
