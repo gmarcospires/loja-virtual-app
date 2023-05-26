@@ -44,7 +44,7 @@ export const productsController = createTRPCRouter({
     )
     .query(async ({ input }) => {
       const { limit, sort, category } = input;
-      const query = `?limit=${limit || 20}&sort=${sort || "asc"}`;
+      const query = `?limit=${limit || 20}&sort=${sort || "desc"}`;
       const resposta: Resposta = await instanceStore.get(
         `/products${
           category !== "todos" ? `/category/${category}` : ""

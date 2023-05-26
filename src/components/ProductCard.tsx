@@ -1,6 +1,7 @@
-import { Badge, Button, Card, Group, Image, Rating, Text } from "@mantine/core";
+import { Badge, Card, Group, Image, Rating, Text } from "@mantine/core";
 import Link from "next/link";
 import { type Products } from "~/server/api/routers/products";
+import ButtonCarrinho from "./ButtonCarrinho";
 interface Props {
   product: Products;
 }
@@ -48,18 +49,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </Card.Section>
 
         <Card.Section m={10} className="self-center">
-          <Text weight={500}>R$ {product.price}</Text>
+          <Text weight={500}>
+            {Number(product.price).toLocaleString("pt-br", {
+              currency: "BRL",
+              style: "currency",
+            })}
+          </Text>
         </Card.Section>
-        <Button
-          variant="light"
-          color="blue"
-          fullWidth
-          mt="md"
-          radius="md"
-          title="Adicionar ao Carrinho"
-        >
-          Adicionar ao Carrinho
-        </Button>
+        <ButtonCarrinho product={product} />
       </Card>
     </Link>
   );

@@ -1,14 +1,8 @@
-import {
-  ActionIcon,
-  Box,
-  Navbar as Nav,
-  ScrollArea,
-  Transition,
-} from "@mantine/core";
+import { ActionIcon, Box, Navbar as Nav, ScrollArea } from "@mantine/core";
 import { IconChevronsLeft, IconChevronsRight } from "@tabler/icons-react";
 import { useContext, useState } from "react";
-import { MainLinks } from "./_navbarLinks";
 import { NavbarOpen } from "~/contexts/Navbar";
+import { MainLinks } from "./_navbarLinks";
 
 export const Navbar: React.FC = () => {
   const [collapsedNavbar, setCollapsedNavbar] = useState(false);
