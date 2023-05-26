@@ -5,20 +5,19 @@ import {
   ThemeIcon,
   UnstyledButton,
 } from "@mantine/core";
-import { IconShoppingCart } from "@tabler/icons-react";
+import { IconHome, IconShoppingCart } from "@tabler/icons-react";
 import Link from "next/link";
 import React, { useContext } from "react";
 import { Carrinho } from "~/contexts/Carrinho";
 
 interface MainLinkProps {
   icon: React.ReactNode;
-  color: string;
   label: string;
   simple: boolean;
   link: string;
 }
 
-function MainLink({ icon, color, label, simple, link }: MainLinkProps) {
+function MainLink({ icon, label, simple, link }: MainLinkProps) {
   return (
     <UnstyledButton className="dark:hover:bg-dark-6 block w-full items-center justify-center rounded-md py-2 hover:bg-gray-100">
       <Link href={link}>
@@ -38,10 +37,9 @@ export function MainLinks({ simple }: { simple: boolean }) {
     {
       icon: (
         <ThemeIcon color={"blue"} variant="light" size={"lg"}>
-          <IconShoppingCart />
+          <IconHome />
         </ThemeIcon>
       ),
-      color: "blue",
       label: "Página Inicial",
       link: "/",
     },
@@ -60,7 +58,6 @@ export function MainLinks({ simple }: { simple: boolean }) {
           </ThemeIcon>
         </Indicator>
       ),
-      color: "teal",
       label: "Carrinho",
       link: "/cart",
     },

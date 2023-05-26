@@ -61,6 +61,7 @@ const Cart = () => {
                   value={produto.qtd}
                   placeholder="Quantidade"
                   min={1}
+                  max={99}
                   w={40}
                   onChange={(val) => {
                     if (val) {
